@@ -1,3 +1,7 @@
+**To Run This Project Open This In Visual Studio Code And Open Two Terminal In It.**
+**1st Terminal** -> Run Command json-server --watch db.json
+**2nd Terminal** -> ng serve
+
 # Material
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
