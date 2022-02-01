@@ -1,0 +1,88 @@
+<app-logoutheader></app-logoutheader>
+
+<body class='body'>
+    <button type="button" (click)="addBtn()" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        Add Student
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Add Student</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form #myform='ngForm' (ngSubmit)="onSubmit(); myform.reset()">
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Enter Student Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="name" name="name" id="name">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Enter Father Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="fname" name="fname">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Enter Email</label>
+                            <input type="text" class="form-control" [(ngModel)]="email" name="email">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputPassword1" class="form-label">Enter Username</label>
+                            <input type="text" class="form-control" [(ngModel)]="username" name="username">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputPassword1" class="form-label">Enter Age</label>
+                            <input type="number" class="form-control" [(ngModel)]="age" name="age">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <button *ngIf="!bool" type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                                value="submit">
+                                Save Changes
+                            </button>
+                            <button *ngIf="bool" class="btn btn-primary" (click)="onSubmit(index)"
+                                data-bs-dismiss="modal">
+                                Save Changes 
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="students?.length">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Father Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students index as i">
+                    <th scope="row">{{student.id}}</th>
+                    <td>{{student.name}}</td>
+                    <td>{{student.fname}}</td>
+                    <td>{{student.username}}</td>
+                    <td>{{student.age}}</td>
+                    <td>{{student.email}}</td>
+                    <td>
+                        <button (click)="onEdit(student)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            type="button" class="btn btn-primary">
+                            Edit &nbsp;
+                        </button>
+                        <button (click)="onDelete(student.id)" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>

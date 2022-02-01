@@ -1,0 +1,24 @@
+
+<app-header></app-header>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="fadeIn first">
+        Login
+        <mat-icon>login</mat-icon>
+      </div>
+  
+      <!-- Login Form -->
+      <form (ngSubmit)="onSubmit()">
+        <input type="text" id="login" [(ngModel)]="username" class="fadeIn second" name="login" placeholder="Username">
+        <input type="text" id="password" [(ngModel)]="password" class="fadeIn third" name="login" placeholder="Password">
+        <input type="submit" class="fadeIn fourth"  value="Log In">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+
+    </div>
+  </div>
